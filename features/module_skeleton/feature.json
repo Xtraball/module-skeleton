@@ -1,0 +1,31 @@
+{
+    "name": "ModuleSkeleton",
+    "code": "module_skeleton",
+    "version": "1.0.0",
+    "category": "integration",
+    "model": "ModuleSkeleton_Model_Skeleton",
+    "desktop_uri": "moduleskeleton/application/",
+    "routes": [
+        {
+            "root": true,
+            "state": "skeleton-index",
+            "controller": "SkeletonIndexController",
+            "url": "skeleton/index/value_id/:value_id",
+            "template": "l1/index.html",
+            "cache": false
+        }
+    ],
+    "icons": [
+        "icons/skeleton1.png",
+        "icons/skeleton2.png"
+    ],
+    "files": [
+        "js/controllers/skeleton.js",
+        "js/factory/skeleton.js",
+        "scss/skeleton.scss"
+    ],
+    "is_ajax": true,
+    "compile": true,
+    "use_account": false,
+    "only_once": false
+}

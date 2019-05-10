@@ -1,0 +1,85 @@
+<?php
+$optionValue = $this->getOptionValue();
+
+$skeleton = (new ModuleSkeleton_Model_Skeleton())
+    ->find($optionValue->getId(), "value_id");
+
+// Create the Skeleton if it doesn't yet exists.
+if (!$skeleton->getId()) {
+    $skeleton = new ModuleSkeleton_Model_Skeleton();
+    $skeleton
+        ->setValueId($optionValue->getId())
+        ->save();
+}
+
+$formSkeleton = new ModuleSkeleton_Form_Skeleton();
+$formSkeleton->populate($skeleton->getData());
+
+?>
+
+<div id="list"
+     class="skeleton">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs"
+        role="tablist">
+        <li role="presentation"
+            class="active">
+            <a href="#skeleton"
+               aria-controls="skeleton"
+               role="tab"
+               data-toggle="tab">
+                <i class="fa fa-folder-open-o"></i>
+                <?php echo p__("skeleton", "Skeleton") ?>
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#design"
+               aria-controls="design"
+               role="tab"
+               data-toggle="tab">
+                <i class="fa fa-pencil"></i>
+                <?php echo p__("skeleton", "Design") ?>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- START SKELETON TAB -->
+        <div role="tabpanel"
+             class="tab-pane active"
+             id="skeleton">
+            <div class="feature-block-add">
+                <h3 class="title-editor no-border-radius title-feature-indent">
+                    <?php echo p__("skeleton", "Skeleton"); ?>
+                </h3>
+                <div class="container-fluid subcontent content-feature">
+                        <?php echo $formSkeleton; ?>
+                </div>
+            </div>
+
+        </div>
+        <!-- /END SKELETON TAB -->
+
+        <!-- START DESIGN TAB -->
+        <div role="tabpanel"
+             class="tab-pane"
+             id="design">
+            <?php echo $this->importBackground($optionValue, false, false); ?>
+        </div>
+        <!-- /END DESIGN TAB -->
+
+    </div>
+</div>
+
+
+<link href="/app/local/modules/ModuleSkeleton/resources/design/desktop/flat/template/module_skeleton/application/edit.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css">
+<script type="text/javascript">
+    var valueId = '<?php echo $optionValue->getId() ?>';
+</script>
+<script type="text/javascript"
+        src="/app/local/modules/ModuleSkeleton/resources/design/desktop/flat/template/module_skeleton/application/edit.js">
+</script>

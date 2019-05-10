@@ -1,0 +1,44 @@
+<ion-view sb-page-background
+          class="module-skeleton skeleton-index">
+
+    <ion-nav-title>{{ pageTitle }}</ion-nav-title>
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="refresh()"
+                class="button button-clear header-item">
+            <i class="icon ion-sb-refresh"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="list">
+            <div class="item item-icon-left item-custom">
+                <i class="icon ion-document-text"></i>
+                <h2>{{ skeleton.title }}</h2>
+            </div>
+            <div class="post-content">
+                <div class="item item-text-wrap item-description item-custom">
+                    {{ skeleton.subtitle }}
+                </div>
+            </div>
+        </div>
+
+        <div class="list"
+             ng-if="collection.length">
+            <div class="item item-custom"
+                 ng-repeat="item in collection">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.subtitle }}</p>
+            </div>
+        </div>
+
+        <div class="list"
+             ng-if="!collection.length">
+            <div class="item text-center item-custom">
+                {{ "No item found" | translate }}
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
