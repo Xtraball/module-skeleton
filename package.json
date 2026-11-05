@@ -1,7 +1,7 @@
 {
   "name": "ModuleSkeleton",
   "type": "module",
-  "decription": "",
+  "description": "Minimal module to copy and rename: one table, one editor form, one mobile page",
   "version": "1.0.0",
   "dependencies": {
     "system": {
